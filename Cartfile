@@ -1,0 +1,7 @@
+github "Moya/Moya" ~> 14.0
+github "onevcat/Kingfisher" "5.14.1"
+
+github "Quick/Nimble" "v8.0.5"
+github "Quick/Quick" "v2.2.0"
+
+
