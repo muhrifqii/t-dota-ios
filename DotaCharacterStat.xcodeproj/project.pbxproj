@@ -23,6 +23,7 @@
 		DC4310AC24B9A19700F00056 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC4310AA24B9A19700F00056 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC4310B324B9E52D00F00056 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = DC4310B224B9E52D00F00056 /* QGrid */; };
 		DC6F11AD24B9F3FA00F901A5 /* PreviewHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F11AC24B9F3FA00F901A5 /* PreviewHeroView.swift */; };
+		DC6F11AF24BB016200F901A5 /* PreviewHeroWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F11AE24BB016200F901A5 /* PreviewHeroWireframe.swift */; };
 		DCBCEA8924B8851400912295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBCEA8824B8851400912295 /* AppDelegate.swift */; };
 		DCBCEA8B24B8851400912295 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBCEA8A24B8851400912295 /* SceneDelegate.swift */; };
 		DCBCEA8D24B8851400912295 /* HeroListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBCEA8C24B8851400912295 /* HeroListView.swift */; };
@@ -78,6 +79,7 @@
 		DC4310A724B99F6F00F00056 /* KingfisherSwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KingfisherSwiftUI.framework; path = Carthage/Build/iOS/KingfisherSwiftUI.framework; sourceTree = "<group>"; };
 		DC4310AA24B9A19700F00056 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		DC6F11AC24B9F3FA00F901A5 /* PreviewHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroView.swift; sourceTree = "<group>"; };
+		DC6F11AE24BB016200F901A5 /* PreviewHeroWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroWireframe.swift; sourceTree = "<group>"; };
 		DCBCEA8524B8851400912295 /* DotaCharacterStat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotaCharacterStat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBCEA8824B8851400912295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCBCEA8A24B8851400912295 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				DC6F11AC24B9F3FA00F901A5 /* PreviewHeroView.swift */,
+				DC6F11AE24BB016200F901A5 /* PreviewHeroWireframe.swift */,
 			);
 			path = HeroPreview;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				DC6F11AD24B9F3FA00F901A5 /* PreviewHeroView.swift in Sources */,
 				DCBCEA9D24B8982800912295 /* HeroListInteractor.swift in Sources */,
 				DC43109C24B9635B00F00056 /* Hero.swift in Sources */,
+				DC6F11AF24BB016200F901A5 /* PreviewHeroWireframe.swift in Sources */,
 				DC4310A224B9758A00F00056 /* HeroListWireframe.swift in Sources */,
 				DC43109E24B9642000F00056 /* BaseTraits.swift in Sources */,
 				DC43109924B9625200F00056 /* HeroListPresenter.swift in Sources */,

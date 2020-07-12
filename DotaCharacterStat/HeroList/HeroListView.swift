@@ -12,6 +12,26 @@ import QGrid
 public protocol HeroListViewTrait: BaseViewTrait {
 }
 
+class HeroListObservedPresenter: ObservableObject, HeroListViewTrait {
+    @State var navigationTitle = "All"
+    @Published var categories: [String] = ["KKK", "aafaf", "223123"]
+    
+    init() {
+    }
+    
+    func showError(_ title: String, message: String?) {
+        
+    }
+    
+    func showProgress() {
+        
+    }
+    
+    func hideProgress() {
+        
+    }
+}
+
 struct TitleNavigationView<Content>: View where Content: View {
     @Binding var title: String
     let content: () -> Content
@@ -30,23 +50,67 @@ struct TitleNavigationView<Content>: View where Content: View {
     }
 }
 
+struct AlertBinding: Identifiable {
+    var id: Int
+    var title: String
+    var message: String?
+    var positive: String?
+    var negative: String?
+    
+    var positiveAction: (() -> Void)?
+    var negativeAction: (() -> Void)?
+    
+    init(_ title: String, message: String?, positive: String?) {
+        self.id = title.hashValue
+        self.title = title
+        self.message = message
+        self.positive = positive
+    }
+}
+
 struct HeroListSView: View {
-    @State private var title: String = "All"
+    @ObservedObject var observable: HeroListObservedPresenter
+    @State private var alert: AlertBinding?
 
     var body: some View {
-        TitleNavigationView(title: $title) {
-            QGrid(self.dummyData(), columns: 2, columnsInLandscape: 4,
-                  vSpacing: 10, hSpacing: 0,
-                  vPadding: 0, hPadding: 0,
-                  isScrollable: true, showScrollIndicators: true) { item in
-                    VStack {
-                        NavigationLink(destination: PreviewHeroView(hero: item)) {
-                            HeroListItemCell(hero: item)
-                        }.buttonStyle(PlainButtonStyle())
+        TitleNavigationView(title: observable.$navigationTitle) {
+            VStack(alignment: .leading, spacing: 0) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(self.observable.categories, id: \.self) { item in
+                            Button(action: self.onRoleTapped(item)) {
+                                Text(item).padding(5)
+                                    .foregroundColor(.black)
+                                    .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color.gray))
+                            }
+                        }
                     }
+                }
+                .padding(5)
+                QGrid(self.dummyData(), columns: 2, columnsInLandscape: 4,
+                      vSpacing: 10, hSpacing: 0,
+                      vPadding: 0, hPadding: 0,
+                      isScrollable: true, showScrollIndicators: true) { item in
+                        VStack {
+                            NavigationLink(destination: PreviewHeroView(observable: .init(hero: item))) {
+                                HeroListItemCell(hero: item)
+                            }.buttonStyle(PlainButtonStyle())
+                        }
+                }
             }
         }
         .onAppear {
+        }
+        .alert(item: self.$alert) { (item: AlertBinding) in
+            Alert(title: Text(item.title),
+                  message: item.message != nil ? Text(item.message!) : nil,
+                  dismissButton: .default(Text(item.positive ?? "OK"), action: { self.alert = nil }))
+        }
+    }
+    
+    func onRoleTapped(_ role: String) -> () -> Void {
+        return {
+            self.alert = AlertBinding(role, message: nil, positive: nil)
         }
     }
     
@@ -70,7 +134,7 @@ extension HeroListSView: HeroListViewTrait {
 #if DEBUG
 struct HeroListSView_Preview: PreviewProvider {
     static var previews: some View {
-        HeroListSView().previewDevice("iPhone 8")
+        HeroListSView(observable: .init()).previewDevice("iPhone 8")
     }
 }
 #endif

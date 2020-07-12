@@ -14,10 +14,7 @@ struct HeroListItemCell: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            KFImage(hero.imageURL!, options: [.progressiveJPEG(.default)])
-                .placeholder { Image(systemName: "plus").imageScale(.large) }
-                .resizable(capInsets: .init(top: 0, leading: 0, bottom: 0, trailing: 0),
-                           resizingMode: .stretch)
+            KFImage.defaultView(hero.imageURL!)
                 .scaledToFill()
             Text(hero.name).font(.system(size: 12)).lineLimit(1)
         }

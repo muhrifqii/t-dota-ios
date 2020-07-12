@@ -52,11 +52,16 @@ public struct Hero: Decodable, Identifiable {
     
     var imageURL: URL? { URL(string: DConst.BASE_URL + imgUrl) }
     var iconURL: URL? { URL(string: DConst.BASE_URL + iconUrl) }
+    var primaryAttributes: HeroAttributeType { HeroAttributeType(rawValue: primaryAttr)! }
     
     static func stub(json: Data) -> Hero {
         let decodable = try! JSONDecoder().decode(Hero.self, from: json)
         return decodable
     }
+}
+
+public enum HeroAttributeType: String {
+    case str, int, agi
 }
 
 public class PersistedHero: NSManagedObject {
