@@ -7,29 +7,41 @@
 //
 
 import Foundation
-
-public protocol HeroListInteractorTrait: BaseInteractorTrait {
-    func remoteFetch(_ callback: @escaping ([Hero]) -> Void)
-    func localFetch()
-}
+import Moya
 
 class HeroListInteractor: HeroListInteractorTrait {
+    let heroApi: MoyaProvider<HeroStatAPI>
+    private var request: Cancellable?
     
-    /// Load all at once (no pagination on api)
-    func remoteFetch(_ callback: @escaping ([Hero]) -> Void) {
-        guard let url = URL(string: "\(DConst.BASE_URL)/herostats") else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else { return }
-            if let res = try? JSONDecoder().decode([Hero].self, from: data) {
-                callback(res)
-            }
-         }.resume()
+    init() {
+        heroApi = HeroStatAPI.defaultProvider
     }
     
-    func localFetch() {
+    func remoteFetch(_ completion: @escaping (Result<[Hero], RepositoryError>) -> Void) {
+        if self.request != nil {
+            self.request?.cancel()
+            self.request = nil
+        }
+        self.request = heroApi.request(.getHero) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let d = try DNetworkDeps.shared.jsonDecoder.decode([Hero].self, from: response.data)
+                    completion(Result.success(d))
+                } catch let err {
+                    completion(Result.failure(RepositoryError.server(err.localizedDescription)))
+                }
+            case let .failure(err):
+                completion(Result.failure(RepositoryError.server(err.localizedDescription)))
+            }
+        }
+    }
+    
+    func localFetch(_ completion: @escaping (Result<[Hero], RepositoryError>) -> Void) {
+        
+    }
+    
+    func filter(by role: String, completion: @escaping (Result<[Hero], RepositoryError>) -> Void) {
+        
     }
 }

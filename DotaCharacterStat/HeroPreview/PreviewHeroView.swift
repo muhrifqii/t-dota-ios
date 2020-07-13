@@ -92,7 +92,7 @@ struct PreviewHeroView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(self.observable.recommendedHero, id: \.id) { item in
-                                KFImage.defaultView(item.imageURL!)
+                                KFImage.defaultView(item.imageURL!).frame(width: nil, height: 132, alignment: .center)
                             }
                         }
                     }

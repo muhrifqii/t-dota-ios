@@ -6,19 +6,17 @@
 //  Copyright © 2020 muhrifqii. All rights reserved.
 //
 
-public protocol BaseViewTrait {
+public protocol BaseViewTrait: AnyObject {    
     func showError(_ title: String, message: String?)
     func showProgress()
     func hideProgress()
 }
 
-public protocol BasePresenterTrait {
-    associatedtype Interactor : BaseInteractorTrait
-    var interactor: Interactor { get }
+public protocol BasePresenterTrait: AnyObject {
 }
 
-public protocol BaseInteractorTrait {
+public protocol BaseInteractorTrait: AnyObject {
 }
 
-public protocol BaseWireframeTrait {
+public protocol BaseWireframeTrait: AnyObject {
 }
