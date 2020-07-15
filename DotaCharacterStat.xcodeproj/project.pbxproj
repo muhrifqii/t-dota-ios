@@ -21,6 +21,7 @@
 		DC4310AB24B9A19700F00056 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4310AA24B9A19700F00056 /* Kingfisher.framework */; };
 		DC4310AC24B9A19700F00056 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC4310AA24B9A19700F00056 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC52194D24BEE0800098D7C3 /* HeroStat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC52194B24BEE0800098D7C3 /* HeroStat.xcdatamodeld */; };
+		DC54DF5724BF65EC008DC8B1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC54DF5624BF65D2008DC8B1 /* libsqlite3.tbd */; };
 		DC6F11AD24B9F3FA00F901A5 /* PreviewHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F11AC24B9F3FA00F901A5 /* PreviewHeroView.swift */; };
 		DC6F11AF24BB016200F901A5 /* PreviewHeroWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F11AE24BB016200F901A5 /* PreviewHeroWireframe.swift */; };
 		DC6F11B124BBA49900F901A5 /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F11B024BBA49900F901A5 /* CommonView.swift */; };
@@ -85,6 +86,7 @@
 		DC4310A724B99F6F00F00056 /* KingfisherSwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KingfisherSwiftUI.framework; path = Carthage/Build/iOS/KingfisherSwiftUI.framework; sourceTree = "<group>"; };
 		DC4310AA24B9A19700F00056 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		DC52194C24BEE0800098D7C3 /* HeroStat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeroStat.xcdatamodel; sourceTree = "<group>"; };
+		DC54DF5624BF65D2008DC8B1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		DC6F11AC24B9F3FA00F901A5 /* PreviewHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroView.swift; sourceTree = "<group>"; };
 		DC6F11AE24BB016200F901A5 /* PreviewHeroWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroWireframe.swift; sourceTree = "<group>"; };
 		DC6F11B024BBA49900F901A5 /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			files = (
 				DC6F11B524BC40BF00F901A5 /* QGrid in Frameworks */,
 				DC6F11B824BC627900F901A5 /* Introspect in Frameworks */,
+				DC54DF5724BF65EC008DC8B1 /* libsqlite3.tbd in Frameworks */,
 				DCBCEAB924B906EC00912295 /* Moya.framework in Frameworks */,
 				DC4310A824B99F6F00F00056 /* KingfisherSwiftUI.framework in Frameworks */,
 				DC4310AB24B9A19700F00056 /* Kingfisher.framework in Frameworks */,
@@ -229,6 +232,7 @@
 		DCBCEAB324B906CF00912295 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC54DF5624BF65D2008DC8B1 /* libsqlite3.tbd */,
 				DC4310AA24B9A19700F00056 /* Kingfisher.framework */,
 				DC4310A724B99F6F00F00056 /* KingfisherSwiftUI.framework */,
 				DCBCEABC24B9254000912295 /* Nimble.framework */,

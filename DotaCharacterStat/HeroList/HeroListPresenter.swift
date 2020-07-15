@@ -29,7 +29,10 @@ final class HeroListPresenter: HeroListPresenterTrait {
             self.interactor.localFetch { result in
                 switch result {
                 case let .success(list):
+                    let roles = self.processRole(list)
+                    self.data = list
                     DispatchQueue.main.async {
+                        self.view?.onRoleLoaded(roles)
                         self.view?.onDataLoaded(list)
                     }
                 case let .failure(err):
@@ -41,16 +44,10 @@ final class HeroListPresenter: HeroListPresenterTrait {
                 switch result {
                 case let .success(list):
                     // process role
-                    var set = Set<String>()
-                    for hero in list {
-                        let n = hero.roles.count
-                        for i in 0..<n {
-                            set.insert(hero.roles[i])
-                        }
-                    }
+                    let roles = self.processRole(list)
                     self.data = list
                     DispatchQueue.main.async {
-                        self.view?.onRoleLoaded(Array(set))
+                        self.view?.onRoleLoaded(roles)
                         self.view?.onDataLoaded(list)
                     }
                 case let .failure(err):
@@ -72,6 +69,17 @@ final class HeroListPresenter: HeroListPresenterTrait {
             }
         }, completion: {
         })
+    }
+    
+    private func processRole(_ list: [Hero]) -> [String] {
+        var set = Set<String>()
+        for hero in list {
+            let n = hero.roles.count
+            for i in 0..<n {
+                set.insert(hero.roles[i])
+            }
+        }
+        return Array(set).sorted()
     }
     
     private func errorDelegator(_ err: RepositoryError) {

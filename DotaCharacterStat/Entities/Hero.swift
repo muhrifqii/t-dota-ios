@@ -62,22 +62,22 @@ public struct Hero: Decodable, Identifiable {
     func toPersistedObject(_ context: NSManagedObjectContext) -> PersistedHero {
         let o = PersistedHero(context: context)
         
-        o.id = id
-        o.name = name
-        o.primaryAttr = primaryAttr
-        o.attackType = attackType
-        o.roles = roles
-        o.imgUrl = imgUrl
-        o.iconUrl = iconUrl
-        o.health = health
-        o.mana = mana
-        o.armor = armor
-        o.attackMin = attackMin
-        o.attackMax = attackMax
-        o.moveSpeed = moveSpeed
-        o.str = str
-        o.agi = agi
-        o.int = int
+        o.setValue(id, forKey: "id")
+        o.setValue(name, forKey: "name")
+        o.setValue(primaryAttr, forKey: "primaryAttr")
+        o.setValue(attackType, forKey: "attackType")
+        o.setValue(roles, forKey: "roles")
+        o.setValue(imgUrl, forKey: "imgUrl")
+        o.setValue(iconUrl, forKey: "iconUrl")
+        o.setValue(health, forKey: "health")
+        o.setValue(mana, forKey: "mana")
+        o.setValue(armor, forKey: "armor")
+        o.setValue(attackMin, forKey: "attackMin")
+        o.setValue(attackMax, forKey: "attackMax")
+        o.setValue(moveSpeed, forKey: "moveSpeed")
+        o.setValue(str, forKey: "str")
+        o.setValue(agi, forKey: "agi")
+        o.setValue(int, forKey: "int")
         return o
     }
 }

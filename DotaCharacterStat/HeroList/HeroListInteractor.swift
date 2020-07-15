@@ -45,13 +45,14 @@ class HeroListInteractor: HeroListInteractorTrait {
     func localFetch(_ completion: @escaping (Result<[Hero], RepositoryError>) -> Void) {
         
         let managedObjectContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<PersistedHero>(entityName: "Hero")
-        let sortDescriptor1 = NSSortDescriptor(key: Hero.CodingKeys.name.rawValue, ascending: true)
+        let entity = NSEntityDescription.entity(forEntityName: "Hero", in: managedObjectContext)
+        let fetchRequest = NSFetchRequest<PersistedHero>()
+        fetchRequest.entity = entity
+        let sortDescriptor1 = NSSortDescriptor(key: "id", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor1]
         do {
-            try managedObjectContext.fetch(fetchRequest).count
-//            let heroes = try managedObjectContext.fetch(fetchRequest).map { $0.toCodableObject() }
-//            completion(Result.success(heroes))
+            let heroes = try managedObjectContext.fetch(fetchRequest).map { $0.toCodableObject() }
+            completion(Result.success(heroes))
         } catch let error {
             NSLog("%@", error.localizedDescription)
         }
@@ -69,8 +70,6 @@ class HeroListInteractor: HeroListInteractorTrait {
         
         try context.execute(request)
         
-//        let insertRequest = NSBatchInsertRequest(entityName: "Hero", objects: <#T##[[String : Any]]#>)
-
         data.forEach { h in
             _ = h.toPersistedObject(context)
         }
