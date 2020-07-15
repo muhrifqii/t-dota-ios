@@ -7,12 +7,15 @@
 //
 
 import SwiftUI
+import CoreData
 
 class HeroListWireframe: HeroListWireframeTrait {
+    var swiftui: HeroListView?
+    
     /// manual injection
-    static func initModule() -> HeroListView {
+    static func initModule(persistentContainer: NSPersistentContainer) -> HeroListView {
         let wireframe = HeroListWireframe()
-        let interactor = HeroListInteractor()
+        let interactor = HeroListInteractor(persistentContainer: persistentContainer)
         let presenter = HeroListPresenter(interactor: interactor)
         let observer = HeroListObservedPresenter(presenter: presenter)
         
@@ -20,5 +23,9 @@ class HeroListWireframe: HeroListWireframeTrait {
         presenter.wireframe = wireframe
 
         return HeroListView(observable: observer)
+    }
+    
+    func navigatePreviewView() {
+        
     }
 }

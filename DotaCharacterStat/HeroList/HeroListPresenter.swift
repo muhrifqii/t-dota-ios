@@ -67,7 +67,9 @@ final class HeroListPresenter: HeroListPresenterTrait {
             guard let self = self else { return }
             
             let filtered = role == "All" ? self.data : self.data.filter { $0.roles.contains(role) }
-            self.view?.onDataLoaded(filtered)
+            DispatchQueue.main.async {
+                self.view?.onDataLoaded(filtered)
+            }
         }, completion: {
         })
     }

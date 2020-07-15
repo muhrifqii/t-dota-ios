@@ -111,7 +111,8 @@ struct HeroListView: View {
 #if DEBUG
 struct HeroListView_Preview: PreviewProvider {
     static var previews: some View {
-        let v = HeroListWireframe.initModule()
+        let sceene = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
+        let v = HeroListWireframe.initModule(persistentContainer: sceene.dataStore!.persistentContainer)
         v.observable.roles = ["Pusher", "Carry", "Support"]
         v.observable.heros = v.observable.dummyData()
         return v.previewDevice("iPhone 8")

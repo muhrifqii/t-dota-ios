@@ -58,6 +58,28 @@ public struct Hero: Decodable, Identifiable {
         let decodable = try! JSONDecoder().decode(Hero.self, from: json)
         return decodable
     }
+    
+    func toPersistedObject(_ context: NSManagedObjectContext) -> PersistedHero {
+        let o = PersistedHero(context: context)
+        
+        o.id = id
+        o.name = name
+        o.primaryAttr = primaryAttr
+        o.attackType = attackType
+        o.roles = roles
+        o.imgUrl = imgUrl
+        o.iconUrl = iconUrl
+        o.health = health
+        o.mana = mana
+        o.armor = armor
+        o.attackMin = attackMin
+        o.attackMax = attackMax
+        o.moveSpeed = moveSpeed
+        o.str = str
+        o.agi = agi
+        o.int = int
+        return o
+    }
 }
 
 public enum HeroAttributeType: String {
@@ -85,5 +107,14 @@ public class PersistedHero: NSManagedObject {
     @NSManaged var str: Int
     @NSManaged var agi: Int
     @NSManaged var int: Int
+    
+    func toCodableObject() -> Hero {
+        Hero(id: id, name: name, primaryAttr: primaryAttr,
+             attackType: attackType, roles: roles,
+             imgUrl: imgUrl, iconUrl: iconUrl,
+             health: health, mana: mana,
+             armor: armor, attackMin: attackMin, attackMax: attackMax,
+             moveSpeed: moveSpeed, str: str, agi: agi, int: int)
+    }
 }
 

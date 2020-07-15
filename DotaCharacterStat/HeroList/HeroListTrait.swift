@@ -29,4 +29,5 @@ public protocol HeroListPresenterTrait: BasePresenterTrait {
 }
 
 public protocol HeroListWireframeTrait: BaseWireframeTrait {
+    func navigatePreviewView()
 }

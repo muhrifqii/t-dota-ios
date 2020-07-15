@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Hero" representedClassName=".PersistedHero" syncable="YES">
+        <attribute name="agi" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="armor" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="attackMax" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="attackMin" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="attackType" attributeType="String"/>
+        <attribute name="health" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="iconUrl" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imgUrl" attributeType="String"/>
+        <attribute name="int" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mana" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="moveSpeed" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="primaryAttr" optional="YES" attributeType="String"/>
+        <attribute name="roles" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="str" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="Hero" positionX="-63" positionY="-18" width="128" height="283"/>
+    </elements>
+</model>
