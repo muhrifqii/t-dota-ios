@@ -17,6 +17,7 @@ final class HeroListObservedPresenter: ObservableObject, HeroListViewTrait {
     @Published var roles: [String] = []
     @Published var heros: [Hero] = []
     @Published var alert: AlertBinding?
+    @Published var loading = true
     
     init(presenter: HeroListPresenterTrait) {
         self.presenter = presenter
@@ -35,9 +36,11 @@ final class HeroListObservedPresenter: ObservableObject, HeroListViewTrait {
     }
     
     func showProgress() {
+        loading = true
     }
     
     func hideProgress() {
+        loading = false
     }
     
     func dummyData() -> [Hero] {
@@ -74,17 +77,23 @@ struct HeroListView: View {
         TitleNavigationView(title: $observable.selectedRole) {
             GeometryReader { (gm: GeometryProxy) in
                 VStack {
-                    self.header
-                    if !self.observable.heros.isEmpty {
-                        QGrid(self.observable.heros, columns: 2, columnsInLandscape: 4,
-                              vSpacing: 10, hSpacing: 0,
-                              vPadding: 0, hPadding: 0,
-                              isScrollable: true, showScrollIndicators: true) { item in
-                                VStack {
-                                    NavigationLink(destination: self.navigationTarget(item)) {
-                                        HeroListItemCell(hero: item)
-                                    }.buttonStyle(PlainButtonStyle())
-                                }
+                    if self.observable.loading {
+                        Spacer()
+                        Text("Loading...").frame(width: gm.size.width, height: nil, alignment: .center)
+                        Spacer()
+                    } else {
+                        self.header
+                        if !self.observable.heros.isEmpty {
+                            QGrid(self.observable.heros, columns: 2, columnsInLandscape: 4,
+                                  vSpacing: 10, hSpacing: 0,
+                                  vPadding: 0, hPadding: 0,
+                                  isScrollable: true, showScrollIndicators: true) { item in
+                                    VStack {
+                                        NavigationLink(destination: self.navigationTarget(item)) {
+                                            HeroListItemCell(hero: item)
+                                        }.buttonStyle(PlainButtonStyle())
+                                    }
+                            }
                         }
                     }
                 }.frame(width: gm.size.width, height: gm.size.height, alignment: .topLeading)
