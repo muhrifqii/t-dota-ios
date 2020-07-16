@@ -22,6 +22,9 @@
 		DC4310AC24B9A19700F00056 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC4310AA24B9A19700F00056 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC52194D24BEE0800098D7C3 /* HeroStat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC52194B24BEE0800098D7C3 /* HeroStat.xcdatamodeld */; };
 		DC54DF5724BF65EC008DC8B1 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC54DF5624BF65D2008DC8B1 /* libsqlite3.tbd */; };
+		DC54DF5924BFD02C008DC8B1 /* PreviewHeroTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54DF5824BFD02C008DC8B1 /* PreviewHeroTrait.swift */; };
+		DC54DF5B24BFDC20008DC8B1 /* PreviewHeroPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54DF5A24BFDC20008DC8B1 /* PreviewHeroPresenter.swift */; };
+		DC54DF5D24BFDC2D008DC8B1 /* PreviewHeroInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54DF5C24BFDC2D008DC8B1 /* PreviewHeroInteractor.swift */; };
 		DC6F11AD24B9F3FA00F901A5 /* PreviewHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F11AC24B9F3FA00F901A5 /* PreviewHeroView.swift */; };
 		DC6F11AF24BB016200F901A5 /* PreviewHeroWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F11AE24BB016200F901A5 /* PreviewHeroWireframe.swift */; };
 		DC6F11B124BBA49900F901A5 /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F11B024BBA49900F901A5 /* CommonView.swift */; };
@@ -87,6 +90,9 @@
 		DC4310AA24B9A19700F00056 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		DC52194C24BEE0800098D7C3 /* HeroStat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeroStat.xcdatamodel; sourceTree = "<group>"; };
 		DC54DF5624BF65D2008DC8B1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		DC54DF5824BFD02C008DC8B1 /* PreviewHeroTrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroTrait.swift; sourceTree = "<group>"; };
+		DC54DF5A24BFDC20008DC8B1 /* PreviewHeroPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroPresenter.swift; sourceTree = "<group>"; };
+		DC54DF5C24BFDC2D008DC8B1 /* PreviewHeroInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroInteractor.swift; sourceTree = "<group>"; };
 		DC6F11AC24B9F3FA00F901A5 /* PreviewHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroView.swift; sourceTree = "<group>"; };
 		DC6F11AE24BB016200F901A5 /* PreviewHeroWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeroWireframe.swift; sourceTree = "<group>"; };
 		DC6F11B024BBA49900F901A5 /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
@@ -199,7 +205,10 @@
 			isa = PBXGroup;
 			children = (
 				DC6F11AC24B9F3FA00F901A5 /* PreviewHeroView.swift */,
+				DC54DF5A24BFDC20008DC8B1 /* PreviewHeroPresenter.swift */,
+				DC54DF5C24BFDC2D008DC8B1 /* PreviewHeroInteractor.swift */,
 				DC6F11AE24BB016200F901A5 /* PreviewHeroWireframe.swift */,
+				DC54DF5824BFD02C008DC8B1 /* PreviewHeroTrait.swift */,
 			);
 			path = HeroPreview;
 			sourceTree = "<group>";
@@ -372,11 +381,13 @@
 				DC52194D24BEE0800098D7C3 /* HeroStat.xcdatamodeld in Sources */,
 				DCBCEA8D24B8851400912295 /* HeroListView.swift in Sources */,
 				DC6F11AD24B9F3FA00F901A5 /* PreviewHeroView.swift in Sources */,
+				DC54DF5924BFD02C008DC8B1 /* PreviewHeroTrait.swift in Sources */,
 				DC90654D24BC7D5E00E9C48F /* Errors.swift in Sources */,
 				DCBCEA9D24B8982800912295 /* HeroListInteractor.swift in Sources */,
 				DC43109C24B9635B00F00056 /* Hero.swift in Sources */,
 				DC9C611624BD441F0055305D /* DataStore.swift in Sources */,
 				DC6F11AF24BB016200F901A5 /* PreviewHeroWireframe.swift in Sources */,
+				DC54DF5D24BFDC2D008DC8B1 /* PreviewHeroInteractor.swift in Sources */,
 				DC4310A224B9758A00F00056 /* HeroListWireframe.swift in Sources */,
 				DC6F11B324BC0D3400F901A5 /* HeroListTrait.swift in Sources */,
 				DC43109E24B9642000F00056 /* BaseTraits.swift in Sources */,
@@ -385,6 +396,7 @@
 				DC4310A424B98D1D00F00056 /* HeroListItemCell.swift in Sources */,
 				DC4310A624B996E800F00056 /* Extensions.swift in Sources */,
 				DC90654F24BC91D000E9C48F /* HeroStatAPI.swift in Sources */,
+				DC54DF5B24BFDC20008DC8B1 /* PreviewHeroPresenter.swift in Sources */,
 				DCBCEAA124B899CC00912295 /* Dependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

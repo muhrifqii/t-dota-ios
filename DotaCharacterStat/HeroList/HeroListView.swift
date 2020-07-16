@@ -49,6 +49,10 @@ final class HeroListObservedPresenter: ObservableObject, HeroListViewTrait {
 struct HeroListView: View {
     @ObservedObject var observable: HeroListObservedPresenter
     @State var progress: Float = 0.8
+    
+    func navigationTarget(_ hero: Hero) -> some View {
+        PreviewHeroWireframe.initModule(persistentContainer: SceneDelegate.instance().dataStore!.persistentContainer, hero: hero)
+    }
 
     var header: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -77,7 +81,7 @@ struct HeroListView: View {
                               vPadding: 0, hPadding: 0,
                               isScrollable: true, showScrollIndicators: true) { item in
                                 VStack {
-                                    NavigationLink(destination: PreviewHeroView(observable: .init(hero: item))) {
+                                    NavigationLink(destination: self.navigationTarget(item)) {
                                         HeroListItemCell(hero: item)
                                     }.buttonStyle(PlainButtonStyle())
                                 }
@@ -111,8 +115,8 @@ struct HeroListView: View {
 #if DEBUG
 struct HeroListView_Preview: PreviewProvider {
     static var previews: some View {
-        let sceene = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
-        let v = HeroListWireframe.initModule(persistentContainer: sceene.dataStore!.persistentContainer)
+        let scene = SceneDelegate.instance()
+        let v = HeroListWireframe.initModule(persistentContainer: scene.dataStore!.persistentContainer)
         v.observable.roles = ["Pusher", "Carry", "Support"]
         v.observable.heros = v.observable.dummyData()
         return v.previewDevice("iPhone 8")

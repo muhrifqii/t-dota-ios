@@ -54,6 +54,7 @@ class HeroListInteractor: HeroListInteractorTrait {
             let heroes = try managedObjectContext.fetch(fetchRequest).map { $0.toCodableObject() }
             completion(Result.success(heroes))
         } catch let error {
+            completion(Result.failure(RepositoryError.other(error.localizedDescription)))
             NSLog("%@", error.localizedDescription)
         }
     }

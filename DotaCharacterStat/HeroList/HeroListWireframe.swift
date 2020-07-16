@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 class HeroListWireframe: HeroListWireframeTrait {
-    var swiftui: HeroListView?
+    var view: HeroListViewTrait?
     
     /// manual injection
     static func initModule(persistentContainer: NSPersistentContainer) -> HeroListView {
@@ -26,6 +26,6 @@ class HeroListWireframe: HeroListWireframeTrait {
     }
     
     func navigatePreviewView() {
-        
+        // its hard to do for swiftui & navigationLink :(
     }
 }
