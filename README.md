@@ -10,6 +10,13 @@
     <img src="https://img.shields.io/badge/license-MIT-BLUE.svg" />
   </a>  
 </p>
+<p align="center">
+  <img src="https://github.com/muhrifqii/t-dota-ios/blob/master/.github/content/ss1.png" width="200"/>
+  &nbsp;
+  <img src="https://github.com/muhrifqii/t-dota-ios/blob/master/.github/content/app_preview.gif" width="200"/>
+  &nbsp;
+  <img src="https://github.com/muhrifqii/t-dota-ios/blob/master/.github/content/ss2.png" width="200"/>
+</p>
 
 ### Stack used in this project
 - SwiftUI
